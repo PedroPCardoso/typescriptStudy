@@ -1,31 +1,15 @@
-// const person: {
-//     name: string;
-//     age: number;
-//     nickname: string;
-// }
-enum Role {ADMIN, READ_ONLY, AUTHOR};
-
-const person: {
-    name: string;
-    age: number;
-    nickname: string;
-    hobbies: string[],
-    role: Role
-} = {
-    name: 'Max',
-    age: 30,
-    nickname: 'Maximilian',
-    hobbies: ['Sports', 'Cooking'],
-    role: Role.ADMIN
-};  
-
-// person.role.push('admin'); // vai dar  certo, o push é uma excessão
-// person.role[1] = 10;
-
-for(const hobby of person.hobbies) {
-    console.log(hobby.toUpperCase());
+function combine(input1: number | string, input2: number | string, resultConversion: 'as-number' | 'as-string') {
+    let result;
+    if (typeof input1 === 'number' && typeof input2 === 'number' || resultConversion == 'as-number') {
+        result = +input1 + +input2;
+    } else {
+        result = input1.toString() + input2.toString();
+    }
+    return result;
 }
-if(person.role === Role.ADMIN) {
-    console.log('is admin');
-}
-// console.log(person.name);
+
+const combineAges = combine(30, 26, 'as-number');
+console.log(combineAges);
+
+const combineNames = combine('Max', 'Anna','as-string');
+console.log(combineNames);
